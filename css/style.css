@@ -125,6 +125,9 @@ main{
 
 .images{
     text-align: center;
+    height: 70vh;
+    width: 80vw;
+    overflow: auto;
 }
 
 .images img{
@@ -200,6 +203,7 @@ main{
     background: none;
     border-radius: 25px;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 #submit:hover{
@@ -208,6 +212,47 @@ main{
     background-color: black;
     border-radius: 25px;
     border: 1px solid black;
+}
+
+.modal{
+    height: 20vh;
+    display: none;
+    position: fixed;
+    width: 20vw;
+    z-index: 1;
+    left: 42vw;
+    top: 20vh;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+.modalContent{
+    background-color: whitesmoke;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: 0;
+    border: 1px solid rgb(202, 202, 202);
+    border-radius: 15px;
+}
+
+.close{
+    color: #aaaaaa;
+    position: absolute;
+    font-size: 28px;
+    font-weight: bold;
+    top: 2px;
+    right: 20px;
+}
+
+.close:hover, .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Donw link animation */
