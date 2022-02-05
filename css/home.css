@@ -14,14 +14,15 @@
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     height: 75px;
     background: rgb(20, 20, 20);
+    z-index: 1;
 }
 
 .title{
     display: flex;
-    width: 30%;
+    width: 20%;
     justify-content: center;
     list-style: none;
     align-items: center;
@@ -121,10 +122,29 @@ transform: scale(0.1, 1);
 
 /*Configuração da secção principal*/
 
-.logo img{
-width: 150px;
-border-radius: 75px;
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: 0 auto;
+    z-index: 2;
+    align-items: center;
 }
+
+.logo{
+    margin: 0 110px;
+}
+
+.logo img{
+    width: 150px;
+    border-radius: 75px;
+}
+
+h1{
+    text-transform: uppercase;
+    font-weight: lighter;
+}
+
 
 
   
