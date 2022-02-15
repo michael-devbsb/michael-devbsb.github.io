@@ -6,6 +6,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
 }
 
 /*Configuração da secção principal*/
@@ -13,25 +14,76 @@
 .content{
     display: flex;
     flex-wrap: wrap;
-    width: 80vw;
-    margin: 0 auto;
+    width: 100vw;
+    padding: 0 10vw;
     z-index: 2;
     align-items: center;
+    overflow-y: scroll;
+    height: 87vh;
+}
+
+.presentation{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    
 }
 
 .logo{
-    margin: 0 110px;
+    margin: 0 90px;
 }
 
 .logo img{
-    width: 150px;
-    border-radius: 75px;
+    width: 200px;
+    border-bottom-left-radius: 100px;
+    border-bottom-right-radius: 100px;
 }
 
 h1{
     text-transform: uppercase;
     font-weight: lighter;
+    width: 40vw;
+    height: 70px;
+    text-align: center;
+    margin: 0 auto;
 }
+
+.presentation p{
+    width: 60vw;
+    margin: 50px auto;
+    text-align: center;
+    font-size: x-large;
+    font-weight: lighter;
+}
+
+.history{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.history p{
+    text-align: center;
+    font-size: larger;
+    font-weight: lighter;
+    margin: 30px auto;
+}
+
+.history a{
+    text-decoration: none;
+    margin: 50px auto;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: black;
+    font-size: x-large;
+    color: whitesmoke;
+    text-transform: uppercase;
+}
+
+
+
 
 
 

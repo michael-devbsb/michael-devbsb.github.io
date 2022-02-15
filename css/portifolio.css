@@ -6,4 +6,39 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
 }
+
+
+.projects{
+    width: 80vw;
+    height: 85vh;
+    margin: 10px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow-y: scroll;
+
+}
+
+.template-box{
+    width: 35vw;
+    margin: 20px 0;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.template-box img{
+    width: 35vw;
+    padding: 10px 10px;
+    
+}
+
+.template-box p{
+    margin: 10px 20px;
+}
+
+
