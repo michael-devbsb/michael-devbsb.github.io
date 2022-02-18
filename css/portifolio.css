@@ -91,4 +91,13 @@ h1{
     opacity: 1;
 }
 
+.certificacoes{
+    
+    text-align: center;
+}
+
+.certificacoes img{
+    
+    width: 1000px;
+}
 
