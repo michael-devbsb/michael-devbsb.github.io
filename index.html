@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio - Michael Monteiro | Ciência da Computação</title>
+  <meta name="description" content="Portfólio de Michael Monteiro - Desenvolvedor e QA, graduando em Ciência da Computação. Projetos em Flutter, web e IA.">
+  <title>Michael Monteiro | Desenvolvedor & QA — Portfólio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
@@ -57,6 +58,7 @@
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      scroll-margin-top: 80px;
     }
     
     section.visible {
@@ -64,10 +66,28 @@
       transform: translateY(0);
     }
     
-    /* Header */
+    /* Nav fixo */
+    .nav-fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(17, 17, 17, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px 0;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+      transition: padding 0.3s ease;
+    }
+    .nav-fixed .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+    .nav-fixed .logo { color: var(--primary); font-weight: 700; font-size: 1.3rem; text-decoration: none; }
+    .nav-fixed nav { margin-top: 0; }
+    
+    /* Header / Hero */
     header {
       background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
-      padding: 40px 0;
+      padding: 100px 0 80px;
+      margin-top: 0;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -103,9 +123,26 @@
     
     header p {
       font-size: 1.2rem;
-      margin-bottom: 30px;
+      margin-bottom: 25px;
       color: var(--gray);
       animation: fadeIn 1s ease-out 0.3s both;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 25px;
+      animation: fadeIn 1s ease-out 0.5s both;
+    }
+    .hero-buttons .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .hero-buttons .btn-outline:hover {
+      background: var(--primary);
+      color: #000;
     }
     
     /* Nav */
@@ -285,6 +322,95 @@
       text-decoration: underline;
     }
     
+    /* Habilidades */
+    #habilidades { background-color: var(--dark); }
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+    }
+    .skill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: rgba(0, 209, 178, 0.08);
+      border: 1px solid rgba(0, 209, 178, 0.2);
+      border-radius: 50px;
+      color: var(--light);
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+    .skill-tag:hover {
+      background: rgba(0, 209, 178, 0.15);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .skill-tag i { color: var(--primary); }
+    
+    /* Formação */
+    #formacao { background: linear-gradient(to bottom, var(--dark-light) 0%, var(--dark) 100%); }
+    .timeline { max-width: 700px; margin: 0 auto; }
+    .timeline-item {
+      padding: 25px;
+      margin-bottom: 20px;
+      background: rgba(30, 30, 30, 0.6);
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+      transition: transform 0.3s ease;
+    }
+    .timeline-item:hover { transform: translateX(5px); }
+    .timeline-item h3 { color: var(--primary); font-size: 1.2rem; margin-bottom: 5px; }
+    .timeline-item .period { color: var(--gray); font-size: 0.9rem; margin-bottom: 8px; }
+    .timeline-item p { color: var(--light); font-size: 0.95rem; margin: 0; }
+    
+    /* Tags nos projetos */
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+    .project-tag {
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      background: rgba(110, 68, 255, 0.2);
+      color: var(--secondary);
+      border-radius: 20px;
+    }
+    
+    /* Botão voltar ao topo */
+    #back-to-top {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #000;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 20px rgba(0, 209, 178, 0.4);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+    }
+    #back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    #back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(0, 209, 178, 0.5);
+    }
+    
     /* Footer */
     footer {
       background: var(--dark-light);
@@ -340,44 +466,91 @@
     
     /* Responsivo */
     @media (max-width: 768px) {
-      header h1 {
-        font-size: 2.2rem;
-      }
-      
-      nav {
-        flex-direction: column;
-        gap: 15px;
-      }
-      
-      .projects-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      section {
-        padding: 60px 0;
-      }
+      header { padding: 80px 0 60px; }
+      header h1 { font-size: 2.2rem; }
+      .nav-fixed .container { flex-direction: column; }
+      nav { flex-wrap: wrap; justify-content: center; }
+      .projects-grid { grid-template-columns: 1fr; }
+      section { padding: 60px 0; }
+      .hero-buttons { flex-direction: column; }
+      #back-to-top { bottom: 15px; right: 15px; width: 44px; height: 44px; }
+    }
+    
+    /* Acessibilidade */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+    .sr-only-focusable:focus {
+      position: static;
+      width: auto;
+      height: auto;
+      padding: 10px 20px;
+      margin: 0;
+      overflow: visible;
+      clip: auto;
+      background: var(--primary);
+      color: #000;
+      z-index: 9999;
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
+  <a href="#sobre" class="sr-only sr-only-focusable">Pular para o conteúdo principal</a>
+
+  <div class="nav-fixed" id="nav-fixed">
+    <div class="container">
+      <a href="#" class="logo" aria-label="Início">Michael Monteiro</a>
+      <nav>
+        <a href="#sobre"><i class="fas fa-user"></i> Sobre</a>
+        <a href="#habilidades"><i class="fas fa-tools"></i> Habilidades</a>
+        <a href="#projetos"><i class="fas fa-code"></i> Projetos</a>
+        <a href="#formacao"><i class="fas fa-graduation-cap"></i> Formação</a>
+        <a href="#contato"><i class="fas fa-envelope"></i> Contato</a>
+      </nav>
+    </div>
+  </div>
 
   <header>
     <div class="container">
       <h1>Michael Monteiro</h1>
-      <p>Desenvolvedor, QA | Ciência da Computação</p>
-      <nav>
-        <a href="#sobre"><i class="fas fa-user"></i> Sobre</a>
-        <a href="#projetos"><i class="fas fa-code"></i> Projetos</a>
-        <a href="#contato"><i class="fas fa-envelope"></i> Contato</a>
-      </nav>
+      <p>Desenvolvedor & QA · Ciência da Computação</p>
+      <p style="font-size: 1rem; max-width: 560px; margin: 0 auto 20px;">Desenvolvimento de software, testes e qualidade. Foco em soluções eficientes e aprendizado contínuo.</p>
+      <div class="hero-buttons">
+        <a href="#projetos" class="btn"><i class="fas fa-code"></i> Ver projetos</a>
+        <a href="#contato" class="btn btn-outline"><i class="fas fa-paper-plane"></i> Entrar em contato</a>
+      </div>
     </div>
   </header>
 
   <section id="sobre" class="container">
     <h2>Sobre mim</h2>
-    <p>Atualmente, com 25 anos e no 7º semestre de Ciência da Computação, estou me especializando no desenvolvimento e teste de softwares.</p>
-    <p>Com muito empenho e dedicação, busco sempre soluções que sejam eficientes e duradouras nas minhas entregas.</p>
-    <p>Comprometido com as demandas que me proponho a entregar, valorizo novos conhecimentos e a possibilidade de compartilha-los.</p>
+    <p>Tenho 25 anos e estou no 7º semestre de <strong>Ciência da Computação</strong>. Atuo com desenvolvimento de software e <strong>QA</strong>, buscando entregas de qualidade e soluções que sejam eficientes e duradouras.</p>
+    <p>Valorizo trabalho em equipe, aprendizado contínuo e a troca de conhecimento. Gosto de me desafiar em projetos que envolvem mobile (Flutter), web e ferramentas de IA.</p>
+    <p>Meus objetivos incluem consolidar experiência em desenvolvimento e testes, contribuir para produtos que façam diferença e seguir evoluindo na carreira de tecnologia.</p>
+  </section>
+
+  <section id="habilidades" class="container">
+    <h2>Habilidades & Tecnologias</h2>
+    <div class="skills-grid">
+      <span class="skill-tag"><i class="fab fa-html5"></i> HTML/CSS</span>
+      <span class="skill-tag"><i class="fab fa-js"></i> JavaScript</span>
+      <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+      <span class="skill-tag"><i class="fas fa-mobile-screen"></i> Flutter</span>
+      <span class="skill-tag"><i class="fas fa-database"></i> Firebase</span>
+      <span class="skill-tag"><i class="fab fa-git-alt"></i> Git</span>
+      <span class="skill-tag"><i class="fas fa-vial"></i> Testes (QA)</span>
+      <span class="skill-tag"><i class="fas fa-brain"></i> Machine Learning</span>
+      <span class="skill-tag"><i class="fas fa-mobile-alt"></i> Desenvolvimento Mobile</span>
+      <span class="skill-tag"><i class="fas fa-globe"></i> Web</span>
+    </div>
   </section>
 
   <section id="projetos" class="container">
@@ -386,8 +559,13 @@
       <div class="project">
         <div class="project-content">
           <h3>App de Diário</h3>
-          <p>Aplicativo mobile para escrita pessoal com modo offline, criptografia e backup seguro. Desenvolvido com Flutter e Firebase.</p>
-          <button class="btn" onclick="verProjeto('https://github.com/seuusuario/diario')">
+          <div class="project-tags">
+            <span class="project-tag">Flutter</span>
+            <span class="project-tag">Firebase</span>
+            <span class="project-tag">Mobile</span>
+          </div>
+          <p>Aplicativo mobile para escrita pessoal com modo offline, criptografia e backup seguro.</p>
+          <button class="btn" onclick="verProjeto('https://github.com/michael-devbsb?tab=repositories')" type="button">
             <i class="fab fa-github"></i> Ver no GitHub
           </button>
         </div>
@@ -396,8 +574,12 @@
       <div class="project">
         <div class="project-content">
           <h3>Site Código de Cria</h3>
+          <div class="project-tags">
+            <span class="project-tag">HTML/CSS</span>
+            <span class="project-tag">Landing Page</span>
+          </div>
           <p>Landing page para o canal de aprendizado em IA voltado às quebradas do Brasil. Design moderno e responsivo.</p>
-          <button class="btn" onclick="verProjeto('https://github.com/seuusuario/codigodecria')">
+          <button class="btn" onclick="verProjeto('https://github.com/michael-devbsb?tab=repositories')" type="button">
             <i class="fab fa-github"></i> Ver no GitHub
           </button>
         </div>
@@ -406,8 +588,12 @@
       <div class="project">
         <div class="project-content">
           <h3>IA de Reconhecimento de Plantas</h3>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Machine Learning</span>
+          </div>
           <p>Modelo de machine learning que identifica plantas medicinais comuns nas periferias brasileiras.</p>
-          <button class="btn" onclick="verProjeto('https://github.com/seuusuario/ia-plantas')">
+          <button class="btn" onclick="verProjeto('https://github.com/michael-devbsb?tab=repositories')" type="button">
             <i class="fab fa-github"></i> Ver no GitHub
           </button>
         </div>
@@ -415,15 +601,32 @@
     </div>
   </section>
 
+  <section id="formacao" class="container">
+    <h2>Formação</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>Ciência da Computação</h3>
+        <p class="period">Graduação · Em andamento (7º semestre)</p>
+        <p>Formação em desenvolvimento de software, algoritmos, banco de dados e engenharia de software.</p>
+      </div>
+      <div class="timeline-item">
+        <h3>Desenvolvimento & QA</h3>
+        <p class="period">Atuação prática</p>
+        <p>Experiência em projetos de desenvolvimento mobile (Flutter), web e testes de software.</p>
+      </div>
+    </div>
+  </section>
+
   <section id="contato" class="container">
     <h2>Contato</h2>
+    <p style="margin-bottom: 30px; color: var(--gray); max-width: 560px;">Quer conversar sobre projetos, oportunidades ou trocar ideias? Entre em contato por um dos canais abaixo.</p>
     <div class="contact-info">
       <div class="contact-item">
         <div class="contact-icon">
           <i class="fas fa-envelope"></i>
         </div>
         <div class="contact-text">
-          <p>Email</p>
+          <p><strong>Email</strong></p>
           <a href="mailto:michaelcontatobsb@gmail.com">michaelcontatobsb@gmail.com</a>
         </div>
       </div>
@@ -433,8 +636,8 @@
           <i class="fab fa-github"></i>
         </div>
         <div class="contact-text">
-          <p>GitHub</p>
-          <a href="https://github.com/michael-devbsb" target="_blank">github.com/michael-devbsb</a>
+          <p><strong>GitHub</strong></p>
+          <a href="https://github.com/michael-devbsb" target="_blank" rel="noopener noreferrer">github.com/michael-devbsb</a>
         </div>
       </div>
       
@@ -443,8 +646,8 @@
           <i class="fab fa-linkedin"></i>
         </div>
         <div class="contact-text">
-          <p>LinkedIn</p>
-          <a href="https://www.linkedin.com/in/michaelmonteirobsb/" target="_blank">linkedin.com/in/michaelmonteirobsb</a>
+          <p><strong>LinkedIn</strong></p>
+          <a href="https://www.linkedin.com/in/michaelmonteirobsb/" target="_blank" rel="noopener noreferrer">linkedin.com/in/michaelmonteirobsb</a>
         </div>
       </div>
     </div>
@@ -453,50 +656,63 @@
   <footer>
     <div class="container">
       <div class="social-links">
-        <a href="https://github.com/michael-devbsb" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/michaelmonteirobsb/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:michaelcontatobsb@gmail.com" target="_blank"><i class="fab fa-envelope fa-rotate-90"></i></a>
+        <a href="https://github.com/michael-devbsb" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/michaelmonteirobsb/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:michaelcontatobsb@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
       </div>
-      <p>&copy; 2025 Michael Monteiro - Todos os direitos reservados</p>
-      <p>Feito com <i class="fas fa-heart" style="color: var(--primary);"></i> por nós</p>
+      <p>&copy; <span id="year">2025</span> Michael Monteiro · Portfólio</p>
+      <p>Feito com <i class="fas fa-heart" style="color: var(--primary);"></i> com foco em qualidade e aprendizado</p>
     </div>
   </footer>
 
+  <button id="back-to-top" type="button" aria-label="Voltar ao topo"><i class="fas fa-chevron-up"></i></button>
+
   <script>
     function verProjeto(url) {
-      window.open(url, '_blank');
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
     
-    // Animação de scroll
     document.addEventListener('DOMContentLoaded', function() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
+      // Ano no footer
+      var yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
       
-      document.querySelectorAll('section').forEach(section => {
+      // Animação de scroll nas seções
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('section').forEach(function(section) {
         observer.observe(section);
       });
       
-      // Suavizar links de navegação
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      // Links âncora suaves
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
         anchor.addEventListener('click', function(e) {
+          var href = this.getAttribute('href');
+          if (href === '#') return;
           e.preventDefault();
-          
-          const targetId = this.getAttribute('href');
-          const targetElement = document.querySelector(targetId);
-          
-          window.scrollTo({
-            top: targetElement.offsetTop - 20,
-            behavior: 'smooth'
-          });
+          var target = document.querySelector(href);
+          if (target) {
+            window.scrollTo({
+              top: target.offsetTop - 70,
+              behavior: 'smooth'
+            });
+          }
         });
       });
+      
+      // Botão voltar ao topo
+      var backBtn = document.getElementById('back-to-top');
+      if (backBtn) {
+        window.addEventListener('scroll', function() {
+          backBtn.classList.toggle('visible', window.pageYOffset > 400);
+        });
+        backBtn.addEventListener('click', function() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
     });
   </script>
 
