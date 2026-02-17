@@ -69,17 +69,21 @@
     /* Nav fixo */
     .nav-fixed {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 20px;
+      left: 20px;
+      right: 20px;
       z-index: 1000;
+      margin: 0 auto;
+      max-width: 1100px;
       background: rgba(17, 17, 17, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 15px 0;
-      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-      transition: padding 0.3s ease;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 14px 24px;
+      border-radius: 50px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      transition: padding 0.3s ease, box-shadow 0.3s ease;
     }
-    .nav-fixed .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+    .nav-fixed .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; max-width: 100%; padding: 0; }
     .nav-fixed .logo { color: var(--primary); font-weight: 700; font-size: 1.3rem; text-decoration: none; }
     .nav-fixed nav { margin-top: 0; }
     
@@ -284,13 +288,76 @@
     /* Contato */
     #contato {
       background: linear-gradient(to bottom, var(--dark-light) 0%, var(--dark) 100%);
+      margin-bottom: 50px;
     }
-    
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+      max-width: 900px;
+    }
+    @media (max-width: 768px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+    }
+
     .contact-info {
       display: flex;
       flex-direction: column;
       gap: 20px;
-      max-width: 600px;
+    }
+
+    /* Formulário de contato */
+    .contact-form {
+      background: rgba(30, 30, 30, 0.6);
+      padding: 28px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .contact-form h3 {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--dark);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      color: var(--light);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: var(--gray);
+      opacity: 0.8;
+    }
+    .contact-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+    .contact-form .btn {
+      width: 100%;
+      margin-top: 5px;
     }
     
     .contact-item {
@@ -468,6 +535,7 @@
     @media (max-width: 768px) {
       header { padding: 80px 0 60px; }
       header h1 { font-size: 2.2rem; }
+      .nav-fixed { left: 10px; right: 10px; padding: 12px 16px; border-radius: 20px; }
       .nav-fixed .container { flex-direction: column; }
       nav { flex-wrap: wrap; justify-content: center; }
       .projects-grid { grid-template-columns: 1fr; }
@@ -619,37 +687,66 @@
 
   <section id="contato" class="container">
     <h2>Contato</h2>
-    <p style="margin-bottom: 30px; color: var(--gray); max-width: 560px;">Quer conversar sobre projetos, oportunidades ou trocar ideias? Entre em contato por um dos canais abaixo.</p>
-    <div class="contact-info">
-      <div class="contact-item">
-        <div class="contact-icon">
-          <i class="fas fa-envelope"></i>
+    <p style="margin-bottom: 30px; color: var(--gray); max-width: 560px;">Quer conversar sobre projetos, oportunidades ou trocar ideias? Entre em contato por um dos canais abaixo ou use o formulário para envio rápido.</p>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="contact-text">
+            <p><strong>Email</strong></p>
+            <a href="mailto:michaelcontatobsb@gmail.com">michaelcontatobsb@gmail.com</a>
+          </div>
         </div>
-        <div class="contact-text">
-          <p><strong>Email</strong></p>
-          <a href="mailto:michaelcontatobsb@gmail.com">michaelcontatobsb@gmail.com</a>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div class="contact-text">
+            <p><strong>Telefone/Whatsapp</strong></p>
+            <a href="tel:+5561999555064">(61) 99955-5064</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-github"></i>
+          </div>
+          <div class="contact-text">
+            <p><strong>GitHub</strong></p>
+            <a href="https://github.com/michael-devbsb" target="_blank" rel="noopener noreferrer">github.com/michael-devbsb</a>
+          </div>
+        </div>
+        
+        <div class="contact-item">
+          <div class="contact-icon">
+            <i class="fab fa-linkedin"></i>
+          </div>
+          <div class="contact-text">
+            <p><strong>LinkedIn</strong></p>
+            <a href="https://www.linkedin.com/in/michaelmonteirobsb/" target="_blank" rel="noopener noreferrer">linkedin.com/in/michaelmonteirobsb</a>
+          </div>
         </div>
       </div>
       
-      <div class="contact-item">
-        <div class="contact-icon">
-          <i class="fab fa-github"></i>
+      <form class="contact-form" id="form-contato" action="#" method="get">
+        <h3>Envio rápido</h3>
+        <div class="form-group">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
         </div>
-        <div class="contact-text">
-          <p><strong>GitHub</strong></p>
-          <a href="https://github.com/michael-devbsb" target="_blank" rel="noopener noreferrer">github.com/michael-devbsb</a>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required>
         </div>
-      </div>
-      
-      <div class="contact-item">
-        <div class="contact-icon">
-          <i class="fab fa-linkedin"></i>
+        <div class="form-group">
+          <label for="mensagem">Mensagem</label>
+          <textarea id="mensagem" name="mensagem" placeholder="Sua mensagem..." required></textarea>
         </div>
-        <div class="contact-text">
-          <p><strong>LinkedIn</strong></p>
-          <a href="https://www.linkedin.com/in/michaelmonteirobsb/" target="_blank" rel="noopener noreferrer">linkedin.com/in/michaelmonteirobsb</a>
-        </div>
-      </div>
+        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Enviar</button>
+      </form>
     </div>
   </section>
 
@@ -711,6 +808,21 @@
         });
         backBtn.addEventListener('click', function() {
           window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+      
+      // Formulário de contato: abre cliente de email com dados preenchidos
+      var formContato = document.getElementById('form-contato');
+      if (formContato) {
+        formContato.addEventListener('submit', function(e) {
+          e.preventDefault();
+          var nome = document.getElementById('nome').value.trim();
+          var email = document.getElementById('email').value.trim();
+          var mensagem = document.getElementById('mensagem').value.trim();
+          var assunto = 'Contato do portfólio - ' + nome;
+          var corpo = mensagem + '\n\n---\nEnviado por: ' + nome + ' (' + email + ')';
+          var mailto = 'mailto:michaelcontatobsb@gmail.com?subject=' + encodeURIComponent(assunto) + '&body=' + encodeURIComponent(corpo);
+          window.location.href = mailto;
         });
       }
     });
