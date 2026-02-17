@@ -83,7 +83,7 @@
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
       transition: padding 0.3s ease, box-shadow 0.3s ease;
     }
-    .nav-fixed .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; max-width: 100%; padding: 0; }
+    .nav-fixed .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; max-width: 100%; padding: 0; }
     .nav-fixed .logo { 
       color: transparent; 
       background: linear-gradient(to right, var(--primary), var(--secondary));
@@ -93,6 +93,31 @@
       text-decoration: none; 
     }
     .nav-fixed nav { margin-top: 0; }
+    
+    /* Botão menu sanduíche - escondido no desktop */
+    .nav-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      background: rgba(0, 209, 178, 0.15);
+      border: 1px solid rgba(0, 209, 178, 0.3);
+      border-radius: 10px;
+      color: var(--primary);
+      font-size: 1.25rem;
+      cursor: pointer;
+      transition: background 0.3s ease, color 0.3s ease;
+      flex-shrink: 0;
+    }
+    .nav-toggle:hover {
+      background: rgba(0, 209, 178, 0.25);
+      color: var(--light);
+    }
+    .nav-toggle .fa-times { display: none; }
+    .nav-fixed.open .nav-toggle .fa-bars { display: none; }
+    .nav-fixed.open .nav-toggle .fa-times { display: block; }
     
     /* Header / Hero */
     header {
@@ -556,9 +581,39 @@
     @media (max-width: 768px) {
       header { padding: 80px 0 60px; }
       header h1 { font-size: 2.2rem; }
-      .nav-fixed { left: 10px; right: 10px; padding: 12px 16px; border-radius: 20px; }
-      .nav-fixed .container { flex-direction: column; }
-      nav { flex-wrap: wrap; justify-content: center; }
+      .nav-fixed { left: 10px; right: 10px; padding: 12px 16px; border-radius: 20px; width: auto;}
+      .nav-fixed .container { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-between; align-items: center;}
+      .nav-toggle { display: flex; order: 2;}
+      .nav-fixed .logo { order: 1; }
+      .nav-fixed nav {
+        order: 3;
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0px;
+        margin-top: 0px;
+        padding-top: 0px;
+        border-top: none;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: max-height 0.35s ease-out, opacity 0.3s ease-out, transform 0.3s ease-out;
+      }
+      .nav-fixed.open nav {
+        max-height: 500px; /* Aumentado para garantir que nada suma */
+        opacity: 1;
+        margin-top: 15px;
+        padding-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .nav-fixed nav a {
+        padding: 12px 10px;
+        border-radius: 8px;
+        display: block;
+      }
+      .nav-fixed nav a:hover {
+        background: rgba(0, 209, 178, 0.1);
+      }
       .projects-grid { grid-template-columns: 1fr; }
       section { padding: 60px 0; }
       .hero-buttons { flex-direction: column; }
@@ -597,7 +652,11 @@
   <div class="nav-fixed" id="nav-fixed">
     <div class="container">
       <a href="#" class="logo" aria-label="Início">Michael Monteiro</a>
-      <nav>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-menu">
+        <i class="fas fa-bars"></i>
+        <i class="fas fa-times"></i>
+      </button>
+      <nav id="nav-menu">
         <a href="#sobre"><i class="fas fa-user"></i> Sobre</a>
         <a href="#habilidades"><i class="fas fa-tools"></i> Habilidades</a>
         <a href="#projetos"><i class="fas fa-code"></i> Projetos</a>
@@ -791,6 +850,24 @@
     }
     
     document.addEventListener('DOMContentLoaded', function() {
+      // Menu sanduíche no mobile
+      var navFixed = document.getElementById('nav-fixed');
+      var navToggle = document.getElementById('nav-toggle');
+      if (navToggle && navFixed) {
+        navToggle.addEventListener('click', function() {
+          var isOpen = navFixed.classList.toggle('open');
+          navToggle.setAttribute('aria-expanded', isOpen);
+          navToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+        });
+        document.querySelectorAll('#nav-menu a').forEach(function(link) {
+          link.addEventListener('click', function() {
+            navFixed.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Abrir menu');
+          });
+        });
+      }
+      
       // Ano no footer
       var yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
