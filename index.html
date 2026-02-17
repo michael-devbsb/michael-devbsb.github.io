@@ -84,7 +84,14 @@
       transition: padding 0.3s ease, box-shadow 0.3s ease;
     }
     .nav-fixed .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; max-width: 100%; padding: 0; }
-    .nav-fixed .logo { color: var(--primary); font-weight: 700; font-size: 1.3rem; text-decoration: none; }
+    .nav-fixed .logo { 
+      color: transparent; 
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      font-weight: 700; font-size: 1.3rem; 
+      text-decoration: none; 
+    }
     .nav-fixed nav { margin-top: 0; }
     
     /* Header / Hero */
@@ -208,6 +215,11 @@
     /* Sobre */
     #sobre {
       background: linear-gradient(to bottom, var(--dark) 0%, var(--dark-light) 100%);
+      margin-top: 20px;
+      margin-bottom: 50px;
+      padding-bottom: 20px;
+      border-bottom-left-radius: 5%;
+      border-bottom-right-radius: 5%;
     }
     
     #sobre p {
@@ -220,6 +232,9 @@
     /* Projetos */
     #projetos {
       background-color: var(--dark-light);
+      margin-top: 50px;
+      padding-top: 10px;
+      padding-bottom: 50px;
     }
     
     .projects-grid {
@@ -244,7 +259,10 @@
     }
     
     .project-content {
+      display: flex;
+      flex-direction: column;
       padding: 25px;
+      justify-content: center;
     }
     
     .project h3 {
@@ -296,7 +314,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 50px;
       align-items: start;
-      max-width: 900px;
+      max-width: 100%;
     }
     @media (max-width: 768px) {
       .contact-wrapper { grid-template-columns: 1fr; }
@@ -417,7 +435,10 @@
     .skill-tag i { color: var(--primary); }
     
     /* Formação */
-    #formacao { background: linear-gradient(to bottom, var(--dark-light) 0%, var(--dark) 100%); }
+    #formacao { 
+      background: linear-gradient(to bottom, var(--dark-light) 0%, var(--dark) 100%);
+      margin-bottom: 60px; 
+    }
     .timeline { max-width: 700px; margin: 0 auto; }
     .timeline-item {
       padding: 25px;
@@ -646,7 +667,7 @@
             <span class="project-tag">HTML/CSS</span>
             <span class="project-tag">Landing Page</span>
           </div>
-          <p>Landing page para o canal de aprendizado em IA voltado às quebradas do Brasil. Design moderno e responsivo.</p>
+          <p>Landing page para o canal de aprendizado em IA voltado às quebradas do Brasil.</p>
           <button class="btn" onclick="verProjeto('https://github.com/michael-devbsb?tab=repositories')" type="button">
             <i class="fab fa-github"></i> Ver no GitHub
           </button>
@@ -655,10 +676,10 @@
       
       <div class="project">
         <div class="project-content">
-          <h3>IA de Reconhecimento de Plantas</h3>
+          <h3>Aplicativo de Marmitas</h3>
           <div class="project-tags">
-            <span class="project-tag">Python</span>
-            <span class="project-tag">Machine Learning</span>
+            <span class="project-tag">Next.js</span>
+            <span class="project-tag">Desenvolvimento App</span>
           </div>
           <p>Modelo de machine learning que identifica plantas medicinais comuns nas periferias brasileiras.</p>
           <button class="btn" onclick="verProjeto('https://github.com/michael-devbsb?tab=repositories')" type="button">
@@ -793,7 +814,7 @@
           var target = document.querySelector(href);
           if (target) {
             window.scrollTo({
-              top: target.offsetTop - 70,
+              top: target.offsetTop - 90,
               behavior: 'smooth'
             });
           }
